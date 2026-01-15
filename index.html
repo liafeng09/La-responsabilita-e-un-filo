@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频播放器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎬 视频播放器</h1>
+            <p class="subtitle">支持多种视频格式</p>
+        </header>
+
+        <main class="main-content">
+            <!-- 视频播放器 -->
+            <div class="player-wrapper">
+                <video id="videoPlayer" class="video-player" controls autoplay>
+                    <source src="La responsabilità è un filo V.mp4" type="video/mp4">
+                    <p>你的浏览器不支持 HTML5 视频。请升级你的浏览器。</p>
+                </video>
+                
+                <!-- 视频信息 -->
+                <div class="video-info">
+                    <h2 id="videoTitle">La responsabilità è un filo V</h2>
+                    <p id="videoDescription">正在播放默认视频</p>
+                </div>
+            </div>
+
+            <!-- 控制面板 -->
+            <div class="control-panel">
+                <div class="upload-section">
+                    <h3>📁 上传本地视频</h3>
+                    <div class="upload-area" id="uploadArea">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <p>拖拽视频文件到此处或点击选择</p>
+                        <input type="file" id="fileInput" accept="video/*" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="url-section">
+                    <h3>🔗 通过链接添加视频</h3>
+                    <div class="url-input-group">
+                        <input 
+                            type="text" 
+                            id="urlInput" 
+                            class="url-input" 
+                            placeholder="输入视频链接 (MP4, WebM 等)"
+                        >
+                        <button id="loadUrlBtn" class="btn btn-primary">加载</button>
+                    </div>
+                </div>
+
+                <!-- 预设视频 -->
+                <div class="preset-section">
+                    <h3>🎥 预设视频示例</h3>
+                    <div class="preset-videos">
+                        <button class="btn btn-preset" onclick="loadPresetVideo('sample1')">
+                            示例视频 1
+                        </button>
+                        <button class="btn btn-preset" onclick="loadPresetVideo('sample2')">
+                            示例视频 2
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 播放列表 -->
+                <div class="playlist-section">
+                    <h3>📋 播放列表</h3>
+                    <ul id="playlist" class="playlist">
+                        <li class="empty-message">暂无视频</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <!-- 快捷键提示 -->
+        <footer class="footer">
+            <div class="shortcuts">
+                <span>空格: 播放/暂停</span> | 
+                <span>F: 全屏</span> | 
+                <span>M: 静音</span> | 
+                <span>← →: 快进/快退</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
