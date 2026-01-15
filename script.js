@@ -1,7 +1,30 @@
+// Video Player with better streaming support
+const player = document.getElementById('videoPlayer');
+const loadingIndicator = document.getElementById('loadingIndicator');
+
+// Hide loading indicator when video starts playing
+player.addEventListener('play', () => {
+    if (loadingIndicator) {
+        loadingIndicator.classList.add('hidden');
+    }
+});
+
+// Show loading indicator when buffering
+player.addEventListener('waiting', () => {
+    if (loadingIndicator) {
+        loadingIndicator.classList.remove('hidden');
+    }
+});
+
+// Hide loading indicator when buffering is done
+player.addEventListener('canplay', () => {
+    if (loadingIndicator) {
+        loadingIndicator.classList.add('hidden');
+    }
+});
+
 // Keyboard shortcuts
 document.addEventListener('keydown', (e) => {
-    const player = document.getElementById('videoPlayer');
-    
     switch (e.code) {
         case 'Space':
             e.preventDefault();
